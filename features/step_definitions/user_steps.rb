@@ -2,6 +2,10 @@ Given /^There is no user with the name "(.*?)"$/ do |username|
   User.destroy_all(:username => username)
 end
 
+When /^I am on the user join page$/ do
+  visit("/user/new")
+end
+
 Given /^I fill out the "(.*?)" field with "(.*?)"$/ do |arg1, arg2|
   pending # express the regexp above with the code you wish you had
 end
