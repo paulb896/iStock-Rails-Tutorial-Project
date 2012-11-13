@@ -3,7 +3,7 @@ Given /^There is no user with the name "(.*?)"$/ do |username|
 end
 
 When /^I am on the user join page$/ do
-  visit("/user/new")
+  visit("/users/new")
 end
 
 Given /^I fill out the "(.*?)" field with "(.*?)"$/ do |arg1, arg2|
