@@ -6,8 +6,8 @@ When /^I am on the user join page$/ do
   visit("/users/new")
 end
 
-Given /^I fill out the "(.*?)" field with "(.*?)"$/ do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+Given /^I fill out the "(.*?)" field with "(.*?)"$/ do |field_name, field_value|
+  fill_in field_name, :with => field_value
 end
 
 When /^I submit the form$/ do

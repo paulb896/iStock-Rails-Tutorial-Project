@@ -6,10 +6,10 @@ Feature: Manage Users
 	Scenario: User successfully creates an account
 		Given There is no user with the name "Anis"
 		When I am on the user join page
-		And I fill out the "username" field with "Anis"
-		And I fill out the "email" field with "azarei@gettyimages.com"
-		And I fill out the "password" field with "password1234"
-		And I fill out the "password_confirmation" field with "password1234"
+		And I fill out the "user_username" field with "Anis"
+		And I fill out the "user_email" field with "azarei@gettyimages.com"
+		And I fill out the "user_password" field with "password1234"
+		And I fill out the "user_password_confirmation" field with "password1234"
 		And I submit the form
 		Then I should see a confirmation that says "User was created"
 		And then a user should exist with the username "Anis"
