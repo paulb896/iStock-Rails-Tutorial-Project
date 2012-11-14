@@ -11,8 +11,8 @@ Feature: Manage Users
 		And I fill out the "user_password" field with "password1234"
 		And I fill out the "user_password_confirmation" field with "password1234"
 		And I submit the form
-		Then I should see a confirmation that says "User was created"
-		And then a user should exist with the username "Anis"
+		Then I can see "User was created"
+		And a user should exist with attribute "username" set to "Anis"
 
 	# Scenario: User can view information on account page
 	# 	Given I am a user with the name "Anis", an email "azarei@gettyimages.com" and a password "password1234"
