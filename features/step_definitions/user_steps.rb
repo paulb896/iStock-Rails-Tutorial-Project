@@ -20,6 +20,11 @@ When /^viewing the user edit page for "(.*?)"$/ do |username|
   visit("/users/#{user_id}/edit")
 end
 
+When /^viewing the user view page for "(.*?)"$/ do |username|
+  user_id = User.find(:first, :conditions => [ "username = ?", username]).id
+  visit("/users/#{user_id}")
+end
+
 When /^I am on the user join page$/ do
   visit("/users/new")
 end
