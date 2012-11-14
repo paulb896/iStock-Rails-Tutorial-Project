@@ -45,3 +45,20 @@ end
 Then /^I see "(.*?)" field is set to "(.*?)"$/ do |field_id, value|
   assert_equal(value, find_field(field_id).value)
 end
+
+When /^viewing the login page$/ do
+  visit("/users/new")
+end
+
+When /^I click the reset password button$/ do
+  click_button "reset_password"
+end
+
+Then /^I should receive an email with a new password$/ do
+  pending # ya, you got me how we check this
+end
+
+Then /^I am redirected to user view page for "(.*?)"$/ do |username|
+  user_id = User.find(:first, :conditions => [ "username = ?", username]).id
+  visit("/users/#{user_id}")
+end
