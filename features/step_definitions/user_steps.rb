@@ -14,9 +14,10 @@ Given /^I fill out the "(.*?)" field with "(.*?)"$/ do |field_name, field_value|
   fill_in field_name, :with => field_value
 end
 
+
 When /^viewing the user edit page for "(.*?)"$/ do |username|
   user_id = User.find(:first, :conditions => [ "username = ?", username]).id
-  visit("/users/#{user_id}")
+  visit("/users/#{user_id}/edit")
 end
 
 When /^I am on the user join page$/ do
@@ -27,13 +28,6 @@ When /^I submit the form$/ do
   click_button "user_create"
 end
 
-When /^I am on the user profile page for "(.*?)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
-
-Then /^I should see a confirmation that says "(.*?)"$/ do |message|
-  pending # express the regexp above with the code you wish you had
-end
 
 Then /^a user should exist with attribute "(.*?)" set to "(.*?)"$/ do |attribute, value|
   assert_equal(1, User.count(:id, :conditions => [ "#{attribute} = ?", value]))
@@ -45,4 +39,7 @@ end
 
 Then /^I see "(.*?)" field is set to "(.*?)"$/ do |field_id, value|
   # Something like (but not exactly): find_field(field_id).text
+  #find_field('user_username').value.should == 'bar'
+  #page.should have_content("Anis")
+  #puts find_field(field_id).text
 end

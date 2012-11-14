@@ -50,8 +50,8 @@ Feature: Manage Users
      Given there is a user with the name "Anis", an email "azarei@gettyimages.com", and a password "password1234"
      When viewing the user edit page for "Anis" 
      Then I see "user_username" field is set to "Anis"
-    And I see "user_email" field is set to "azarei@gettyimages.com"
-    And I see "user_password" field is set to "password1234"
+     And I see "user_email" field is set to "azarei@gettyimages.com"
+     And I see "user_password" field is set to "password1234"
 
   # Scenario: User can edit information on account page
   #   Given I am a user with the name "Anis"
