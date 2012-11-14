@@ -38,8 +38,5 @@ Then /^I can see "(.*?)"$/ do |text|
 end
 
 Then /^I see "(.*?)" field is set to "(.*?)"$/ do |field_id, value|
-  # Something like (but not exactly): find_field(field_id).text
-  #find_field('user_username').value.should == 'bar'
-  #page.should have_content("Anis")
-  #puts find_field(field_id).text
+  assert_equal(value, find_field(field_id).value)
 end
