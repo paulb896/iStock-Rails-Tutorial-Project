@@ -66,6 +66,7 @@ Feature: User Information Edit
     And I fill out the "email" field with "azarei@gettyimages.com"
     And I click the reset password button
     Then I can see "Email was sent."
+    And the email is sent to "azarei@gettyimages.com"
 
   Scenario: User cannot edit information on another users account page
     Given there is a user with the name "Paul", an email "pbeauchamp@gettyimages.com", and a password "password7890"
