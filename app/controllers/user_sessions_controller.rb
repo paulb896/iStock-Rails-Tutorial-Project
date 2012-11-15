@@ -1,11 +1,11 @@
-class UserrSessionsController < ApplicationController
+class UserSessionsController < ApplicationController
   def new
     @user = User.new
   end
 
   def create
     if @user == login(params[:username], params[:password])
-      redirect_back_or_to(User.find(params[:id]), :message => 'Welcome #{@username}.')
+      redirect_back_or_to(root_path, :message => 'Welcome #{@user.username}!')
     else
       flash.now[:alert] = "Sorry invalid login credentials, b*tch."
       render :action => :new
