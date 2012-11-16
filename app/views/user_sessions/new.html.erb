@@ -14,8 +14,10 @@
   <div class="actions">
     <%= submit_tag "Login", :id => "login" %>
   </div>
-
 <% end %>
-  <div>
-    <%= button_to "Reset Password", {:action => path_reset} %>
-  </div>
+
+<br />
+
+<div>
+  <%= button_to "Reset Password",  password_reset_path %>
+</div>

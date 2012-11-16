@@ -8,5 +8,5 @@ IStockRailsTutorialProject::Application.routes.draw do
   match 'logout' => 'user_sessions#destroy', :as => :logout
 
   match 'password_reset' => 'password_reset#index',	:as => :password_reset
-  match 'password_reset_confirm' => 'password_reset_confirm#create',	:as => :password_reset_confirm
+  match 'password_reset_confirm' => 'password_reset#create',	:as => :password_reset_confirm
 end

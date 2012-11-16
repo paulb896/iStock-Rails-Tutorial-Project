@@ -63,9 +63,9 @@ Feature: User Information Edit
   Scenario: User can reset their password
     Given there is a user with the name "Anis", an email "azarei@gettyimages.com", and a password "password1234"
     When viewing the password reset page
-    And I fill out the "email" field with "azarei@gettyimages.com"
+    And I fill out the "user_email" field with "azarei@gettyimages.com"
     And I click the reset password button
-    Then I can see "Email was sent."
+    Then I can see "Email sent with password reset instructions."
     And the email is sent to "azarei@gettyimages.com"
 
   Scenario: User cannot edit information on another users account page
