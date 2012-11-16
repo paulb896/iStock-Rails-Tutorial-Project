@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
     if @user == login(params[:username], params[:password])
       redirect_back_or_to(root_path, :message => 'Welcome #{@user.username}!')
     else
-      flash.now[:alert] = "Sorry invalid login credentials, b*tch."
+      flash[:notice] = "Sorry invalid login credentials, b*tch."
       render :action => :new
     end
   end

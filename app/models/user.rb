@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :message => "Please fill in a password", :allow_blank => false
 
   def send_password_reset
-    mail :to => self.email, :subject => "Password Reset"
+    UserMailer.password_reset(self).deliver
   end
 end

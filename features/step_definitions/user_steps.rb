@@ -47,11 +47,6 @@ When /^viewing the login page$/ do
 end
 
 When /^I click the reset password button$/ do
-  ActionMailer::Base.delivery_method = :test
-  # make sure that actionMailer perform an email delivery
-  ActionMailer::Base.perform_deliveries = true
-  # clear all the email deliveries, so we can easily checking the new ones
-  ActionMailer::Base.deliveries.clear
   click_button "password_reset"
 end
 
@@ -77,8 +72,8 @@ Then /^I am redirected to user view page for "(.*?)"$/ do |username|
   visit("/users/#{user_id}")
 end
 
-Then /^the email is sent to "(.*?)"$/ do |arg1|
+Then /^the email is sent to "(.*?)"$/ do |email_address|
   email = ActionMailer::Base.deliveries.first
-  email.to.should == @user.email
+  email.to.first.should == email_address
 end
 
