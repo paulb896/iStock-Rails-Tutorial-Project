@@ -89,11 +89,6 @@ Then /^I see "(.*?)" field is set to "(.*?)"$/ do |field_id, value|
   assert_equal(value, find_field(field_id).value)
 end
 
-Then /^I am redirected to user view page for "(.*?)"$/ do |username|
-  user_id = User.find(:first, :conditions => [ "username = ?", username]).id
-  visit("/users/#{user_id}")
-end
-
 Then /^the email is sent to "(.*?)"$/ do |email_address|
   email = ActionMailer::Base.deliveries.first
   email.to.first.should == email_address

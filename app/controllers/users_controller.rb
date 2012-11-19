@@ -34,10 +34,10 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    #if current_user.id != params[:id]
-    #  redirect_to root_path, :notice => "You can only edit your own account."
-    #  return
-    #end
+    if !logged_in? || (current_user.id != params[:id].to_i)
+      redirect_to root_path, :notice => "You can only edit your own account."
+      return
+    end
 
     @user = User.find(params[:id])
   end

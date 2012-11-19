@@ -95,9 +95,10 @@ Feature: User Information Edit
   Scenario: User cannot edit information on another users account page
     Given there is a user with the name "Paul", an email "pbeauchamp@gettyimages.com", and a password "password7890"
     And there is a user with the name "Anis", an email "azarei@gettyimages.com", and a password "password1234"
+    And user with name "Anis" and password "password1234" is logged in
     When viewing the login page
     And I fill out the "username" field with "Anis"
     And I fill out the "password" field with "password7890"
     And I click the login button
     And viewing the user edit page for "Paul"
-    Then I am redirected to user view page for "Paul"
+    Then I can see "You can only edit your own account."
