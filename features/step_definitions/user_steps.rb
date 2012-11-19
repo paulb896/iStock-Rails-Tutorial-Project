@@ -64,6 +64,11 @@ When /^I click the login button$/ do
   click_button "login"
 end
 
+When /^I click the logout button$/ do
+  click_button "logout"
+end
+
+
 When /^viewing the login page$/ do
   visit("/login")
 end
