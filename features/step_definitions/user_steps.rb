@@ -7,11 +7,26 @@ Given /^there is a user with the name "(.*?)", an email "(.*?)", and a password 
   user.username = username
   user.email = email
   user.password = password
-  user.save
+  user.save!
 end
 
 Given /^I fill out the "(.*?)" field with "(.*?)"$/ do |field_name, field_value|
   fill_in field_name, :with => field_value
+end
+
+Given /^user with "(.*?)" "(.*?)" has a "(.*?)" of "(.*?)"$/ do |attribute_lookup, attribute_lookup_value, attribute_to_set, value_to_set|
+  user = User.find(:first, :conditions => ["#{attribute_lookup} = ?", attribute_lookup_value])
+  user["#{attribute_to_set}"] = value_to_set
+  user.password = user.password
+  user.save!
+end
+
+Given /^user with name "(.*?)" and password "(.*)" is logged in$/ do |username, password|
+  user = User.find(:first, :conditions => [ "username = ?", username])
+  visit("/login")
+  fill_in 'username', :with => username
+  fill_in 'password', :with => password
+  click_button "login"
 end
 
 
@@ -33,14 +48,21 @@ When /^I submit the form$/ do
   click_button "user_create"
 end
 
-When /^viewing the password reset page$/ do
+When /^I submit the password change form$/ do
+  click_button "password_change"
+end
+
+When /^viewing the request password reset page$/ do
   visit password_reset_path
+end
+
+When /^viewing the password reset page with token "(.*?)"$/ do |token|
+  visit password_reset_edit_path(:auth_token => token)
 end
 
 When /^I click the login button$/ do
   click_button "login"
 end
-
 
 When /^viewing the login page$/ do
   visit("/login")
@@ -76,4 +98,3 @@ Then /^the email is sent to "(.*?)"$/ do |email_address|
   email = ActionMailer::Base.deliveries.first
   email.to.first.should == email_address
 end
-

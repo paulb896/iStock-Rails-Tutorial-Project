@@ -1,0 +1,17 @@
+<%= form_for :user, :url => password_reset_change_path(:auth_token => @auth_token) do |f| %>
+  Email: <%= @user.email %><br />
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+   <div class="actions">
+    <%= f.submit "Change password", :id => 'password_change' %>
+   </div>
+<% end %>
+
+<p class="flash"><%= flash[:notice] %></p>

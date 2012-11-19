@@ -34,6 +34,11 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    #if current_user.id != params[:id]
+    #  redirect_to root_path, :notice => "You can only edit your own account."
+    #  return
+    #end
+
     @user = User.find(params[:id])
   end
 
@@ -41,6 +46,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    @user.generate_password_reset_token
 
     respond_to do |format|
       if @user.save
