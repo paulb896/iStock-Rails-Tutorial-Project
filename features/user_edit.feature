@@ -5,11 +5,11 @@ Feature: User Information Edit
 
 
   Scenario: User can view information on user edit page
-     Given there is a user with the name "Anis", an email "azarei@gettyimages.com", and a password "password1234"
-     And user with name "Anis" and password "password1234" is logged in
-     When viewing the user edit page for "Anis" 
-     Then I see "user_username" field is set to "Anis"
-     And I see "user_email" field is set to "azarei@gettyimages.com"
+    Given there is a user with the name "Anis", an email "azarei@gettyimages.com", and a password "password1234"
+    And user with name "Anis" and password "password1234" is logged in
+    When viewing the user edit page for "Anis" 
+    Then I see "user_username" field is set to "Anis"
+    And I see "user_email" field is set to "azarei@gettyimages.com"
 
   Scenario: User can edit information on their own account page
     Given there is a user with the name "Anis", an email "azarei@gettyimages.com", and a password "password1234"

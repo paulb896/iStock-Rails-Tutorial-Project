@@ -29,6 +29,14 @@ Given /^user with name "(.*?)" and password "(.*)" is logged in$/ do |username, 
   click_button "login"
 end
 
+Given /^user with name "(.*?)" is an admin$/ do |username|
+  user = User.find(:first, :conditions => [ "username = ?", username])
+  user.make_admin
+end
+
+When /^viewing the user listing page$/ do
+  visit("/users")
+end
 
 When /^viewing the user edit page for "(.*?)"$/ do |username|
   user_id = User.find(:first, :conditions => [ "username = ?", username]).id
@@ -75,6 +83,10 @@ end
 
 When /^I click the reset password button$/ do
   click_button "password_reset"
+end
+
+When /^clicking the log out button$/ do
+  click_link "user_logout"
 end
 
 

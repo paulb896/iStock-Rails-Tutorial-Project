@@ -4,16 +4,16 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    if @user == login(params[:username], params[:password])
+    if @user === login(params[:username], params[:password])
       redirect_back_or_to(root_path, :message => 'Welcome #{@user.username}!')
     else
-      flash[:notice] = "Sorry invalid login credentials, b*tch."
+      flash[:message] = "Sorry invalid login credentials."
       render :action => :new
     end
   end
 
   def destroy
     logout
-    redirect_to(:users, :message => 'Logged out!')
+    redirect_to(:users, :notice => 'Logged out!')
   end
 end
