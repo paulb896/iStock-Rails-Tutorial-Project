@@ -23,4 +23,6 @@ class User < ActiveRecord::Base
     save!
     UserMailer.password_reset(self).deliver
   end
+
+  has_one :admin
 end
