@@ -110,3 +110,8 @@ Then /^the email is sent to "(.*?)"$/ do |email_address|
   email = ActionMailer::Base.deliveries.first
   email.to.first.should == email_address
 end
+
+When /^I click the destroy link for user with the name of "(.*?)"$/ do |username|
+  user_id = User.find(:first, :conditions => [ "username = ?", username]).id
+  click_button "destroy_user_#{user_id}"
+end
