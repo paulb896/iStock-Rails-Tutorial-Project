@@ -72,6 +72,11 @@ When /^I click the login button$/ do
   click_button "login"
 end
 
+When /^I click the logout button$/ do
+  click_button "logout"
+end
+
+
 When /^viewing the login page$/ do
   visit("/login")
 end
@@ -104,4 +109,9 @@ end
 Then /^the email is sent to "(.*?)"$/ do |email_address|
   email = ActionMailer::Base.deliveries.first
   email.to.first.should == email_address
+end
+
+When /^I click the destroy link for user with the name of "(.*?)"$/ do |username|
+  user_id = User.find(:first, :conditions => [ "username = ?", username]).id
+  click_button "destroy_user_#{user_id}"
 end

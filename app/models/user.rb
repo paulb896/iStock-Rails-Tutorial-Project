@@ -25,4 +25,9 @@ class User < ActiveRecord::Base
   end
 
   has_one :admin
+
+  def make_admin
+    user_admin = Admin.new(:user_id => self.id)
+    user_admin.save!
+  end
 end
