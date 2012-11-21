@@ -76,7 +76,6 @@ When /^I click the logout button$/ do
   click_button "logout"
 end
 
-
 When /^viewing the login page$/ do
   visit("/login")
 end
@@ -89,6 +88,10 @@ When /^clicking the log out button$/ do
   click_link "user_logout"
 end
 
+When /^I click the destroy link for user with the name of "(.*?)"$/ do |username|
+  user_id = User.find(:first, :conditions => [ "username = ?", username]).id
+  click_link "destroy_user_#{user_id}"
+end
 
 Then /^a user should exist with attribute "(.*?)" set to "(.*?)"$/ do |attribute, value|
   assert_equal(1, User.count(:id, :conditions => [ "#{attribute} = ?", value]))
@@ -111,7 +114,4 @@ Then /^the email is sent to "(.*?)"$/ do |email_address|
   email.to.first.should == email_address
 end
 
-When /^I click the destroy link for user with the name of "(.*?)"$/ do |username|
-  user_id = User.find(:first, :conditions => [ "username = ?", username]).id
-  click_button "destroy_user_#{user_id}"
-end
+

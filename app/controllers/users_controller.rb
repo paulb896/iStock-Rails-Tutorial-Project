@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    if !logged_in? || (current_user.id != params[:id].to_i)
+    if !can_modify?
       redirect_to root_path, :notice => "You can only edit your own account."
       return
     end
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if can_modify? && @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'Changes were saved.' }
         format.json { head :no_content }
       else
@@ -85,5 +85,10 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def can_modify?
+    logged_in? && ((current_user.id == params[:id].to_i) || !current_user.admin.nil?)
   end
 end
