@@ -12,7 +12,7 @@ Feature: Admin Article Moderation
     And I fill out the "article_title" field with "Big News!"
     And I fill out the "article_body" field with "Apparently there was some big news today!"
     And I create an article
-    Then I can see "Article successfully created!"
+    Then I can see "Article was successfully created."
 
   Scenario: Admin user unsuccessfully creates an article due to a missing title
     Given there is a user with the name "Anis_2", an email "azarei@gettyimages.com", and a password "password1234"
@@ -21,7 +21,7 @@ Feature: Admin Article Moderation
     When viewing the create article page
     And I fill out the "article_body" field with "Apparently there was some big news today!"
     And I create an article
-    Then I can see "Please fill in all fields."
+    Then I can see "Please fill in all fields"
 
   Scenario: Admin user unsuccessfully creates an article due to a missing body
     Given there is a user with the name "Anis_2", an email "azarei@gettyimages.com", and a password "password1234"
@@ -30,4 +30,4 @@ Feature: Admin Article Moderation
     When viewing the create article page
     And I fill out the "article_title" field with "Big News!"
     And I create an article
-    Then I can see "Please fill in all fields."
+    Then I can see "Please fill in all fields"

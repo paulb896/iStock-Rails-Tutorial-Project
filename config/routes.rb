@@ -1,4 +1,6 @@
 IStockRailsTutorialProject::Application.routes.draw do
+  resources :articles
+
   root :to => "users#index"
 
   resources :users

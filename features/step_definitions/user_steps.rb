@@ -96,11 +96,11 @@ When /^I click the destroy link for user with the name of "(.*?)"$/ do |username
 end
 
 When /^viewing the create article page$/ do
-  visit "/article/new"
+  visit "/articles/new"
 end
 
 When /^I create an article$/ do
-  click_link "article_create"
+  click_button "article_create"
 end
 
 # Then step definitions
