@@ -1,7 +1,7 @@
-Feature: Admin Article Moderation
+Feature: Admin Creation of Articles
   In order to inform site users
   As a user with admin privileges
-  I want to be able to create, edit, and delete articles
+  I want to be able to create articles
 
 
   Scenario: Admin user can create an article
