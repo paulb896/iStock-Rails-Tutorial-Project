@@ -1,5 +1,5 @@
 Feature: Admin Account Moderation
-  In order to 
+  In order to modify existing user accounts
   As a user with admin privileges
   I want to be able to view, edit, and delete user accounts
 

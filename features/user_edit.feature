@@ -19,7 +19,7 @@ Feature: User Information Edit
     And I fill out the "user_email" field with "pbeauchamp@gettyimages.com"
     And I fill out the "user_password" field with "password7890"
     And I fill out the "user_password_confirmation" field with "password7890"
-    When I submit the form
+    When I create a user
     Then I can see "Changes were saved"
     And a user should exist with attribute "username" set to "Paul"
     And a user should exist with attribute "email" set to "pbeauchamp@gettyimages.com"
@@ -32,7 +32,7 @@ Feature: User Information Edit
     And I fill out the "user_username" field with "Anis"
     And I fill out the "user_password" field with "password1234"
     And I fill out the "user_password_confirmation" field with "password1234"
-    And I submit the form
+    And I create a user
     Then I can see "Please fill in an email"
 
   Scenario: User unsuccessfully updates an account due to missing username
@@ -43,7 +43,7 @@ Feature: User Information Edit
     And I fill out the "user_email" field with "azarei@gettyimages.com"
     And I fill out the "user_password" field with "password1234"
     And I fill out the "user_password_confirmation" field with "password1234"
-    And I submit the form
+    And I create a user
     Then I can see "Please fill in a username"
 
   Scenario: User unsuccessfully updates an account due to missing password
@@ -52,7 +52,7 @@ Feature: User Information Edit
     When viewing the user edit page for "Paul" 
     And I fill out the "user_username" field with "Anis"
     And I fill out the "user_email" field with "azarei@gettyimages.com"
-    And I submit the form
+    And I create a user
     Then I can see "Please fill in a password"
 
   Scenario: User unsuccessfully updates an account due to mismatched passwords
@@ -63,7 +63,7 @@ Feature: User Information Edit
     And I fill out the "user_email" field with "azarei@gettyimages.com"
     And I fill out the "user_password" field with "password1234"
     And I fill out the "user_password_confirmation" field with "password"
-    And I submit the form
+    And I create a user
     Then I can see "Password should match confirmation"
 
   Scenario: User can request password change

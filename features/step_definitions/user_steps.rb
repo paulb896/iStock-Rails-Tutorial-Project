@@ -1,3 +1,4 @@
+# Given step definitions
 Given /^There is no user with the name "(.*?)"$/ do |username|
   User.destroy_all(:username => username)
 end
@@ -34,6 +35,7 @@ Given /^user with name "(.*?)" is an admin$/ do |username|
   user.make_admin
 end
 
+# When step definitions
 When /^viewing the user listing page$/ do
   visit("/users")
 end
@@ -52,7 +54,7 @@ When /^I am on the user join page$/ do
   visit("/users/new")
 end
 
-When /^I submit the form$/ do
+When /^I create a user$/ do
   click_button "user_create"
 end
 
@@ -93,6 +95,15 @@ When /^I click the destroy link for user with the name of "(.*?)"$/ do |username
   click_link "destroy_user_#{user_id}"
 end
 
+When /^viewing the create article page$/ do
+  visit "/article/new"
+end
+
+When /^I create an article$/ do
+  click_link "article_create"
+end
+
+# Then step definitions
 Then /^a user should exist with attribute "(.*?)" set to "(.*?)"$/ do |attribute, value|
   assert_equal(1, User.count(:id, :conditions => [ "#{attribute} = ?", value]))
 end
