@@ -14,6 +14,15 @@ When /^I edit an article$/ do
   click_button "article_create"
 end
 
+When /^viewing the article listing page$/ do
+  visit articles_path
+end
+
+When /^I click the destroy link for article with the title of "(.*?)"$/ do |title|
+  article_id = Article.find(:first, :conditions => [ "title = ?", title]).id
+  click_link "article_delete_#{article_id}"
+end
+
 
 # Then step definitions
 Then /^an article with the title "(.*?)", has a body "(.*?)"$/ do |title, body|

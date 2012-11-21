@@ -1,5 +1,5 @@
 Feature: Admin Modification of Articles
-  In order to inform site users
+  In order to control site content
   As a user with admin privileges
   I want to be able to edit previously created artlicles
 
