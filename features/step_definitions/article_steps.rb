@@ -20,7 +20,12 @@ end
 
 When /^I click the destroy link for article with the title of "(.*?)"$/ do |title|
   article_id = Article.find(:first, :conditions => [ "title = ?", title]).id
-  click_link "article_delete_#{article_id}"
+  visit "article_delete_#{article_id}"
+end
+
+When /^viewing the article with title "(.*?)"$/ do |title|
+  article_id = Article.find(:first, :conditions => [ "title = ?", title]).id
+  visit "articles/#{article_id}"
 end
 
 
