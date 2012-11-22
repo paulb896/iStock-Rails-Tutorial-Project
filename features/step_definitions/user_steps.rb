@@ -95,13 +95,6 @@ When /^I click the destroy link for user with the name of "(.*?)"$/ do |username
   click_link "destroy_user_#{user_id}"
 end
 
-When /^viewing the create article page$/ do
-  visit "/articles/new"
-end
-
-When /^I create an article$/ do
-  click_button "article_create"
-end
 
 # Then step definitions
 Then /^a user should exist with attribute "(.*?)" set to "(.*?)"$/ do |attribute, value|
