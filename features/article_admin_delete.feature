@@ -12,4 +12,4 @@ Feature: Admin Deletion of Articles
     When viewing the article listing page
     And I click the destroy link for article with the title of "Big news"
     And viewing the article listing page
-    And I cannot see "Big news"
+    Then I cannot see "Big news"
