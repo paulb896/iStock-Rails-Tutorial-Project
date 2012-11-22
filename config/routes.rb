@@ -1,5 +1,6 @@
 IStockRailsTutorialProject::Application.routes.draw do
   resources :articles
+  resources :comments
 
   root :to => "users#index"
 
